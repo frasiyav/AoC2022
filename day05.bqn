@@ -10,20 +10,28 @@ _Move ← {n‿a‿b←𝕨 ⋄ (n⊸↓⋈⊣∾˜·𝔽n⊸↑)˜´⌾(a‿b�
 
 
 # Array based solution
-a ← ∾init
-c ← »+`≠¨init
-i ← ↕≠a
+n‿a‿b←<˘⍉>moves
+o←|0⌊1+d←n××b-a
+c←↕≠init
+u←n×⍉(c>⌜b)-(c>⌜a)
+i ← ↕≠∾init
 R ← ≠○(i⊸>)´⊢-<´
-G ← -˜´(↕≠init)⊸>¨
 
-_F ← {n‿a‿b rev _𝕣 s‿arr:
-  d←×b-a
-  f←a⊏s
-  t←b⊏s+↩n×G a‿b
-  p←i+(f-t)×z←R 0‿n+t
-  p+↩n×d×R f‿t+(d<0)×n-1
-  p+↩rev×(⊢×+`⌾⌽-+`)z
-  s⋈p⊏arr
+F ← {𝕊 rev:
+  arr←∾init
+  g←»+`≠¨init
+  Move ← {u𝕊n‿a‿b‿d‿o:
+    f←a⊏g
+    t←b⊏g+↩u
+    m←R 0‿n+t
+    p←i
+    p+↩(f-t)×m
+    p+↩d×R f‿t+o
+    p+↩rev◶⟨0,⊢×+`⌾⌽-+`⟩m
+    arr↩p⊏arr
+  }
+  u Move˘⍉>n‿a‿b‿d‿o
+  g⊏arr
 }
 
-•Show {⊏´c‿a 𝕩 _F´⌽ moves}¨1‿0
+•Show F¨1‿0
