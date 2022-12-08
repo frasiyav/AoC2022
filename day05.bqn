@@ -20,8 +20,8 @@ b↩b⊏˘g
 a↩a⊏˘g↩s»g
 R←⍉·≠˝i>⌜⎉1⊢-⎉1<˝
 m←R b≍n+b
-p←i⊸+˘m×x←a-b
-o←|0⌊1+d←n××¬x
+p←i⊸+˘m×a-b
+o←|0⌊1+d←n××b-a
 p+↩d×R o+⎉1 a≍b
 pr←p+(+`⌾⌽-+`)⌾⍉⊸×m
 •Show (f⊏arr⊏˝⌽)¨pr‿p
