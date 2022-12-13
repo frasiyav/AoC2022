@@ -1,7 +1,6 @@
-⟨lf, Split, ReplaceAll⟩ ← •Import "bqn-libs/strings.bqn"
+⟨ReplaceAll⟩ ← •Import "bqn-libs/strings.bqn"
 
-i ← lf Split¨(lf∾lf)Split ¯1↓•file.Chars "input13.txt"
-i ↩ (•BQN ⟨"["‿"]","⟨"‿"⟩"⟩⊸ReplaceAll)⚇1 i
+i ← •BQN '⟨'∾'⟩'∾˜⟨"["‿"]","⟨"‿"⟩"⟩ReplaceAll •file.Chars "input13.txt"
 
-•Show +´(1+≡⟜∧¨/·↕≠)i
-•Show ×´⟨⟨2⟩⟩‿⟨⟨6⟩⟩{1+/∊⟜0‿1⍋𝕨∾𝕩}∾i
+•Show +´1+∧⊸≡˘⊸/⟜(↕≠)∘‿2⥊i
+•Show ×´1+/0‿1∊˜⍋⟨⟨2⟩⟩‿⟨⟨6⟩⟩∾i
