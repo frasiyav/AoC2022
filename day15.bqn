@@ -1,7 +1,6 @@
-⟨Split, ToNums⟩ ← •Import "bqn-libs/strings.bqn"
+⟨ ToNums⟩ ← •Import "bqn-libs/strings.bqn"
 
-i ← (2(↑⋈↓)·∾·(ToNums 2↓⊢)¨2‿3‿8‿9⊏' 'Split⊢)¨•file.Lines"input15.txt"
-d ← +˝|-˝˘[[sx,·],[sy,·]]←1‿2‿0⍉>⍉>i
+d ← +˝|-˝˘[[sx,·],[sy,·]]←2‿1‿0⍉∘‿2‿2⥊>ToNums¨•file.Lines"input15.txt"
 
 F ← ((«⊸<∨»⊸<)·«⊸≠«≤1+⊢)⊸/·⥊·⌈`sx(∧-(</·⍉≍)+)d-sy|∘-⊢
 
