@@ -11,21 +11,22 @@ NZ ← (start∨0≠flow)⊸/
 paths NZ˘∘NZ↩
 flow NZ↩
 start ↩ ⊑/init←NZ start
-n ← ≠paths
 
 memo ← Hashmap˜⟨⟩
+MSet ← {𝕨 memo.Set 𝕩 ⋄ 𝕩}
 
 Search ← {
   memo.Has 𝕩? memo.Get 𝕩;
-  𝕊 ⟨open, cr, t⟩:
-    𝕩{𝕗 memo.Set 𝕩}⊸⊢ ⌈´{
-      (𝕩⊑open) ∨ 𝕩≡cr? 0;
-      0 < nt←t-cr‿𝕩⊑paths?
-        0 ⌈ (nt×𝕩⊑flow) + Search ⟨1⌾(𝕩⊸⊑)open, 𝕩, nt⟩
+  𝕊 open‿curr‿t:
+    𝕩⊸MSet ⌈´{
+      (𝕩⊑open) ∨ 𝕩≡curr? 0;
+      0 < nt ← t - curr‿𝕩⊑paths?
+        (nt×𝕩⊑flow) + Search ⟨1⌾(𝕩⊸⊑)open, 𝕩, nt⟩
       ; 0
-    }¨↕n
+    }¨↕≠paths
 }
 
 •Show Search ⟨init, start, 30⟩
 
-•Show ⌈´+○{Search⟨init∨𝕩, start, 26⟩}⟜¬˘∘‿16⥊⟨16‿'c',1⟩•bit._Cast@+↕2⋆n
+bc ← ∘‿16⥊⟨16‿'c',1⟩•bit._Cast@+↕2⋆≠paths
+•Show ⌈´+○{Search⟨init∨𝕩, start, 26⟩}⟜¬˘bc
