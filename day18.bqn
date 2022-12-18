@@ -6,9 +6,9 @@ r←1+↕n←=g←d⥊d×´⊸↑/⁼+˝i××`1»d
 pad ← {⊢↑˜2+≢}{𝕎𝕏}´»˙⊸A¨r
 shifts ← {≍}{𝕎∾𝕏}´⥊«‿»A⌜r
 ns ← ∾○/○⥊⟜(⊢¬⊸∧·∨˝Shifts) 3(⥊⟜1(⊑=⊢)⥊⥊·↕⋆)˜n
-NeighborC ← ((⊑×·+´·¬1↓⊢)ns⊏⥊)⎉n
-SA ← +´∘⥊ ·NeighborC (n⥊3)↕Pad
-Flood ← {𝕨𝕊⍟(𝕩⊸≢) 𝕨×⌈˝Shifts 𝕩}⟜(⊢×≢⥊↕∘≠∘⥊)
+NCount ← ((⊑×·+´·¬1↓⊢)ns⊏⥊)⎉n
+SArea ← +´∘⥊ ·NCount (n⥊3)↕Pad
+Flood ← {𝕨𝕊⍟(𝕩⊸≢) 𝕨×∨˝Shifts 𝕩}⟜(1⌾⊑0×⊢)
 
-•Show SA g
-•Show SA ⊑⊸≠ Flood ¬g
+•Show SArea g
+•Show SArea ⊑⊸≠ Flood ¬g
