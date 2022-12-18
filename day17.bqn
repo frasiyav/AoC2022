@@ -12,30 +12,25 @@ shapes ← ⟨
   [1‿1,1‿1]
 ⟩
 
-Position ← {h‿w←≢𝕩 ⋄ »˘9↑˘⟨3+h,-2+w⟩↑𝕩}
-shapes Position¨↩
+shapes {h‿w←≢𝕩 ⋄ »˘7↑˘⟨3+h,-1+w⟩↑𝕩}¨↩
 
-Extend ← 1«˘·»˘1»˘0×⊢
-TrimTop ← (⊑∘/2<+´˘)⊸↓
-Blocked ← (+○(+´)≠·+´∨)○⥊
-_shift ← {𝕨 ¬∘Blocked n←𝔽˘𝕩? n; 𝕩}
-_Push ← {𝔽◶⟨«_shift,»_shift⟩}
+_blocked ← {𝕨(∨=○(+´)∨⟜⥊⟜𝕩)○⥊◶0‿⊢ 𝔽𝕩}
+TrimTop ← (⊑∘/∨´˘)⊸↓
 
-init ← ⟨0, 0, 0, 1‿9⥊1⟩
+init ← ⟨0, 0, 0, 1‿7⥊1⟩
 
-Drop ← { 𝕊 ⟨h, piececount, jetindex, grid⟩:
+Drop ← { 𝕊 ⟨h, piececount, j, grid⟩:
   piece ← shapes ⊑˜ 5|piececount
-  g ← (Extend piece) ∾ grid
+  g ← grid ∾˜ 0×piece
   p ← piece ∾ 0×grid
   moving ← 1
   While {𝕊:moving}‿{𝕊:
-    p ↩ g (jetindex⊑jets)_Push p
-    jetindex ((≠jets)|+)↩1
-    g ¬∘Blocked n←»p? p↩n;
-    g+↩p ⋄ moving↩0
+    p ↩ 0≢◶p‿⊢ g (j⊑jets)◶«‿»˘_blocked p
+    j ↩ (≠jets)|j+1
+    0≢◶{𝕊:g+↩p⋄moving↩0}‿{p↩𝕩} g »_blocked p
   }
   g TrimTop↩
-  ⟨h+g-○≠grid, 1+piececount, jetindex, 40↑g⟩
+  ⟨h+g-○≠grid, 1+piececount, j, 40↑g⟩
 }
 
 # Part 1
