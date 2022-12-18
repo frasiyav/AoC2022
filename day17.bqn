@@ -1,4 +1,3 @@
-⟨lf, Split, ToNums⟩ ← •Import "bqn-libs/strings.bqn"
 ⟨HashMap⟩ ← •Import "bqn-libs/hashmap.bqn"
 While ← {𝕩•_while_𝕨@}´
 
@@ -38,13 +37,12 @@ Drop ← { 𝕊 ⟨h, piececount, j, grid⟩:
 
 # Part 2
 cache ← Hashmap˜⟨⟩
-cycle←@ ⋄ found ← 0
+cycle ← 0
 state ← init
-While {𝕊:¬found}‿{𝕊:
+While {𝕊:0≡cycle}‿{𝕊:
   state Drop↩
   {cache.Has 𝕩?
     cycle ↩ (cache.Get𝕩)∾2↑state
-    found ↩ 1
   ;
     𝕩 cache.Set 2↑state
   } 5⊸|⌾⊑ 1↓state
