@@ -1,15 +1,14 @@
 ⟨ToNums⟩ ← •Import "bqn-libs/strings.bqn"
+A ← {𝕎⎉𝕩}
 
-d←1+⌈´˘i←⍉>ToNums¨•file.Lines"input18.txt"
-g←d⥊d×´⊸↑/⁼+˝i××`1»d
-
-Pad ← {»⎉1 »⎉2 » (2+≢)⊸↑𝕩}
-NeighborC ← {(⊑×·+´·¬1↓⊢)13‿4‿10‿12‿14‿16‿22⊏⥊𝕩}⎉3
-SA ← +´∘⥊ ·NeighborC 3‿3‿3↕Pad
-
-•Show SA g
-
-Shifts ← «⎉1∾»⎉1∾«⎉2∾»⎉2∾«∾»≍⊢
+d←1+⌈´˘i←⍉>ToNums¨•FLines"input18.txt"
+r←1+↕n←=g←d⥊d×´⊸↑/⁼+˝i××`1»d
+pad ← {⊢↑˜2+≢}{𝕎𝕏}´»˙⊸A¨r
+shifts ← {≍}{𝕨∾𝕏}´⥊«‿»A⌜r
+ns ← ∾○/○⥊⟜(⊢¬⊸∧·∨˝Shifts) 3(⥊⟜1(⊑=⊢)⥊⥊·↕⋆)˜n
+NeighborC ← ((⊑×·+´·¬1↓⊢)ns⊏⥊)⎉n
+SA ← +´∘⥊ ·NeighborC (n⥊3)↕Pad
 Flood ← {𝕨𝕊⍟(𝕩⊸≢) 𝕨×⌈˝Shifts 𝕩}⟜(⊢×≢⥊↕∘≠∘⥊)
 
+•Show SA g
 •Show SA ⌈´∘⥊⊸≠ Flood ¬g
