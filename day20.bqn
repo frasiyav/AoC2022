@@ -3,7 +3,7 @@ i ← ⊑∘ToNums¨•Flines"input20.txt"
 key ← 811589153
 
 M ← ¬≠⊸↑⟜(/⁼⋈)
-Mix ← {n𝕊e: e⊏˜{F←(𝕩 M i←⊑𝕩⊐𝕨)⊸/ ⋄ (i⊑𝕩⊏e)⊸⌽⌾F 𝕩}´⟜⌽⟜p⍟n p←↕≠e}
+Mix ← {n𝕊e: e⊏˜{F←(𝕩 M i←⊑𝕩⊐𝕨)⊸/ ⋄ (𝕨⊑e)⊸⌽⌾F 𝕩}´⟜⌽⟜p⍟n p←↕≠e}
 Coords ← (≠|1000‿2000‿3000+·⊑∘/0=⊢)⊸⊏
 
 •Show +´ Coords 1  Mix i
