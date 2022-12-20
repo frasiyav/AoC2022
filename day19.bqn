@@ -7,7 +7,7 @@ F ← {mins 𝕊 bp:
   m ← Hashmap˜⟨⟩
   maxr ← mins∾˜⌈˝bp
   MaxG ← {
-    0≡⊑𝕩? 0;
+    1≥t←⊑𝕩? t×¯1⊑1⊑𝕩;
     m.Has 𝕩? m.Get 𝕩;
     𝕊 t‿robots‿res:
       rb ← 3↑robots
@@ -20,7 +20,7 @@ F ← {mins 𝕊 bp:
           t≥tn?
             (tn×gb) + MaxG ⟨t-tn, 1⊸+⌾(b⊸⊑)robots, recipe-˜res+tn×rb⟩
         ; 0
-      }¨(maxr>robots)/↕4
+      }¨{t≤3?⟨3⟩;(maxr>robots)/↕4}
   }
   MaxG ⟨mins, 1‿0‿0‿0, 0‿0‿0⟩
 }
