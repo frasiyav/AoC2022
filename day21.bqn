@@ -18,4 +18,3 @@ P2 ← {𝕊"humn": ⊢; 𝕊_R∘L 𝕩}
 
 •Show {𝕏@}P1 "root"
 •Show <○T◶{𝕎⁼𝕩}‿{𝕏⁼𝕨}´ P2¨ 0‿2⊏L"root"
-
