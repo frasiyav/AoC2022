@@ -11,7 +11,7 @@ _R ← {
   𝔽 _R a‿o‿b:
     f←Op o 
     a 2⊸×⊸+○T◶{𝕨F𝕩}‿{𝕨F𝕏}‿{𝕩F˜𝕎}‿{𝕎𝔽𝕏}○𝔽 b;
-  𝔽 _R n: ⊑∘ToNums ⊑n
+  ⊑∘ToNums ⊑𝕩
 }
 P1 ← {𝕊_R∘L 𝕩}
 P2 ← {𝕊"humn": ⊢; 𝕊_R∘L 𝕩}
