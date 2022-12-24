@@ -1,19 +1,25 @@
-[u,d,l,r]←"^v<>"=⌜↓˘´⟜1‿¯1 1‿¯1↓´˜>•Flines "input24.txt"
+[n,s,w,e]←"^v<>"=⌜↓˘´⟜1‿¯1 1‿¯1↓´˜>•Flines "input24.txt"
 
-u  1⊸⌽⍟(↕≠)↩
-d ¯1⊸⌽⍟(↕≠)↩
-l  1⊸⌽˘⍟(↕·≠⊏)↩
-r ¯1⊸⌽˘⍟(↕·≠⊏)↩
+l←•math.LCM´dim←≢n
+n  1⊸⌽⍟(↕l)↩
+s ¯1⊸⌽⍟(↕l)↩
+w  1⊸⌽˘⍟(↕l)↩
+e ¯1⊸⌽˘⍟(↕l)↩
+m ← ¬∨˝>>[n,s,e,w]
 
-m ← ¬∨˝>>(lcm←•math.LCM´≢⊑u)⊸⥊¨u‿d‿l‿r
-z ← 0⥊˜≢⊏m
 Shifts ← »∨«∨»˘∨«˘∨⊢
-Empty ← 0≡·+´⥊
 I ← {1⌾(𝕨⊸⊑)𝕩}
-F ← {a‿b𝕊c: c+↩1 ⋄ {{𝕤⋄c+↩1}⊸⊢(m⊏˜lcm|c)×Shifts a⊸I⍟Empty 𝕩}•_while_(0≡b⊑⊢) a I z ⋄ c}
+F ← {a‿b𝕊c:
+  c+↩1
+  { 𝕩 ↩ a⊸I⍟(0≡·+´⥊) 𝕩
+    𝕩 ↩ (m⊏˜l|c)×Shifts 𝕩
+    c+↩1
+    𝕩
+  }•_while_(0≡b⊑⊢) a I dim⥊0
+  c
+}
 
-s ← 0‿0
-e ← ¯1‿¯1
+a‿b ← ⟨0‿0,¯1‿¯1⟩
 
-•Show s‿e F 0
-•SHow 0 F´ ⟨s‿e,e‿s,s‿e⟩
+•Show a‿b F 0
+•SHow 0 F´ ⟨a‿b,b‿a,a‿b⟩
