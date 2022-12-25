@@ -9,15 +9,7 @@ m ← ¬∨˝>>[n,s,e,w]
 
 Shifts ← »∨«∨»˘∨«˘∨⊢
 I ← {1⌾(𝕨⊸⊑)𝕩}
-F ← {a‿b𝕊c:
-  c+↩1
-  { 𝕩 ↩ a⊸I⍟(0≡·+´⥊) 𝕩
-    𝕩 ↩ (m⊏˜l|c)×Shifts 𝕩
-    c+↩1
-    𝕩
-  }•_while_(0≡b⊑⊢) a I dim⥊0
-  c
-}
+F ← {a‿b𝕊c: c+↩1 ⋄ {{c+↩1}⊸⊢(m⊏˜l|c)×Shifts a⊸I⍟(0≡·+´⥊) 𝕩}•_while_(0≡b⊑⊢) a I dim⥊0 ⋄ c}
 
 a‿b ← ⟨0‿0,¯1‿¯1⟩
 
